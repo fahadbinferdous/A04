@@ -20,7 +20,9 @@ function calculateCount(){
 calculateCount()    //call the function to be effective
 
 
-
+// available jobs filter count //
+let filterCount=document.getElementById('filter-count')
+filterCount.innerText=(availableJobs.children.length)+' Jobs'
 
 
 
