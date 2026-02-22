@@ -24,5 +24,15 @@ calculateCount()    //call the function to be effective
 let filterCount=document.getElementById('filter-count')
 filterCount.innerText=(availableJobs.children.length)+' Jobs'
 
+// toggle buttons
+
+function toggleStyle(id){
+    document.getElementById('toggle-all-btn').classList.remove('btn-active')
+    document.getElementById('toggle-interview-btn').classList.remove('btn-active')
+    document.getElementById('toggle-rejected-btn').classList.remove('btn-active')
+    
+    document.getElementById(id).classList.add('btn-active')  // highlight the selected toggle button
+}
+
 
 
