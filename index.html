@@ -19,9 +19,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
 
-
-    <!----------------------------- icons --------------------------------->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <!----------------------------- style ---------------------------------->
     <style>
@@ -37,59 +34,61 @@
     <!-------------------------------------------------------------------------------------------------->
     <!-----------------------------------------dashboard------------------------------------------------>
     <!-------------------------------------------------------------------------------------------------->
-    <section class="space-y-5 py-6 border-b-1 border-[#E6E7E9]">
-    <h1 class="ag text-[#002C5C] text-3xl font-bold text-center md:text-left">Job Application Tracker</h1>
-    <div class="grid grid-cols-3 gap-5">
-        <div class="bg-white border-1 border-[#F1F2F4] p-5 rounded-lg text-center md:text-left">
-            <p class="geist text-[#002C5C] text-sm">Total</p>
-            <h2 class="ag text-[#002C5C] font-bold text-2xl">8</h2>
+    <header class="space-y-5 py-6 border-b-1 border-[#E6E7E9]">
+        <h1 class="ag text-[#002C5C] text-3xl font-bold text-center md:text-left">Job Application Tracker</h1>
+        <div class="grid grid-cols-3 gap-5">
+            <div class="bg-white border-1 border-[#F1F2F4] p-5 rounded-lg text-center md:text-left">
+                <p class="geist text-[#002C5C] text-sm">Total</p>
+                <h2 id="total-count" class="ag text-[#002C5C] font-bold text-2xl">0</h2>
+            </div>
+            <div class="bg-white border-1 border-[#F1F2F4] p-5 rounded-lg text-center md:text-left">
+                <p class="geist text-[#002C5C] text-sm">Interview</p>
+                <h2 id="interview-count" class="ag text-[#10B981] font-bold text-2xl">0</h2>
+            </div>
+            <div class="bg-white border-1 border-[#F1F2F4] p-5 rounded-lg text-center md:text-left">
+                <p class="geist text-[#002C5C] text-sm">Rejected</p>
+                <h2 id="rejected-count" class="ag text-[#EF4444] font-bold text-2xl">0</h2>
+            </div>        
         </div>
-        <div class="bg-white border-1 border-[#F1F2F4] p-5 rounded-lg text-center md:text-left">
-            <p class="geist text-[#002C5C] text-sm">Interview</p>
-            <h2 class="ag text-[#10B981] font-bold text-2xl">0</h2>
-        </div>
-        <div class="bg-white border-1 border-[#F1F2F4] p-5 rounded-lg text-center md:text-left">
-            <p class="geist text-[#002C5C] text-sm">Rejected</p>
-            <h2 class="ag text-[#EF4444] font-bold text-2xl">0</h2>
-        </div>        
-    </div>
-    </section>
+    </header>
     
+    <main>
     <!-------------------------------------------------------------------------------------------------->
     <!--------------------------------------available jobs---------------------------------------------->
     <!-------------------------------------------------------------------------------------------------->
     <section class="flex justify-between py-6">
         <h3 class="ag font-bold text-2xl text-[#002C5C]">Available Jobs</h3>
-        <p class="geist font-medium text-[16px] text-[#64748B]">8 jobs</p>
+        <p id="filter-count" class="geist font-medium text-[16px] text-[#64748B]">0 jobs</p>
     </section>
 
     <!-------------------------------------------------------------------------------------------------->
     <!--------------------------------------toggle buttons---------------------------------------------->
     <!-------------------------------------------------------------------------------------------------->
-    <section class="py-6">
-            <button class="btn geist">All</button>
-            <button class="btn geist">Interview</button>
-            <button class="btn geist">Rejected</button>
+    <section id="toggle-buttons" class="py-6">
+            <button onclick="toggleStyle('toggle-all-btn')" id="toggle-all-btn" class="btn btn-active geist">All</button>
+            <button onclick="toggleStyle('toggle-interview-btn')" id="toggle-interview-btn" class="btn geist">Interview</button>
+            <button onclick="toggleStyle('toggle-rejected-btn')" id="toggle-rejected-btn" class="btn geist">Rejected</button>
     </section>
  
     <!-------------------------------------------------------------------------------------------------->
-    <!------------------------------------------job list------------------------------------------------>
+    <!------------------------------------------available jobs------------------------------------------------>
     <!-------------------------------------------------------------------------------------------------->
-    <section class="space-y-5">
+    <section id="available-jobs" class="space-y-5">
     <!--------------------------------Mobile First Corp------------------------------------->  
         <div class="bg-white border-1 border-[#F1F2F4] p-6 rounded-lg flex justify-between items-start">  
             <div class="space-y-5">
                 <h4 class="ag font-bold text-[#002C5C] text-[18px]">Mobile First Corp</h4>
                 <p class="ag text-[#64748B] text-[16px]">React Native Developer</p>
                 <p class="ag text-[#64748B] text-[12px]">Remote  •  Full-time  •  $130,000 - $175,000</p>
-                <button class="btn geist bg-[#EEF4FF] border-none text-[#002C5C]">NOT APPLIED</button>
+                <button id="accepted-btn" class="btn geist bg-[#EEF4FF] border-none text-[#1dc22a] hidden cursor-default">APPLIED</button>
+                <button id="rejected-btn" class="btn geist bg-[#EEF4FF] border-none text-[#f57272] hidden cursor-default">REJECTED</button>
                 <p class="ag text-[#323B49] text-[12px]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
                 <div>
-                    <button class="btn btn-outline btn-success geist">Interview</button>
-                    <button class="btn btn-outline btn-error geist">Rejected</button>
+                    <button id="card-interview-btn" class="btn btn-outline btn-success geist">Interview</button>
+                    <button id="card-rejected-btn" class="btn btn-outline btn-error geist">Rejected</button>
                 </div> 
             </div>
-            <button class="cursor-pointer w-24 h-24 md:w-auto md:h-auto"><img src="recycle bin.png" alt="" ></button>
+            <button class="btn btn-circle"><img src="recycle bin.png" alt="" ></button>
         </div> 
     <!--------------------------------WebFlow Agency------------------------------------->  
         <div class="bg-white border-1 border-[#F1F2F4] p-6 rounded-lg flex justify-between items-start">  
@@ -104,7 +103,7 @@
                     <button class="btn btn-outline btn-error geist">Rejected</button>
                 </div> 
             </div>
-            <button class="cursor-pointer w-24 h-24 md:w-auto md:h-auto"><img src="recycle bin.png" alt="" ></button>
+            <button class="btn btn-circle"><img src="recycle bin.png" alt="" ></button>
         </div> 
     <!--------------------------------DataViz Solutions------------------------------------->  
         <div class="bg-white border-1 border-[#F1F2F4] p-6 rounded-lg flex justify-between items-start">  
@@ -119,7 +118,7 @@
                     <button class="btn btn-outline btn-error geist">Rejected</button>
                 </div> 
             </div>
-            <button class="cursor-pointer w-24 h-24 md:w-auto md:h-auto"><img src="recycle bin.png" alt="" ></button>
+            <button class="btn btn-circle"><img src="recycle bin.png" alt="" ></button>
         </div> 
     <!--------------------------------CloudFirst Inc------------------------------------->  
         <div class="bg-white border-1 border-[#F1F2F4] p-6 rounded-lg flex justify-between items-start">  
@@ -134,7 +133,7 @@
                     <button class="btn btn-outline btn-error geist">Rejected</button>
                 </div> 
             </div>
-            <button class="cursor-pointer w-24 h-24 md:w-auto md:h-auto"><img src="recycle bin.png" alt="" ></button>
+            <button class="btn btn-circle"><img src="recycle bin.png" alt="" ></button>
         </div> 
     <!--------------------------------Innovation Labs------------------------------------->  
         <div class="bg-white border-1 border-[#F1F2F4] p-6 rounded-lg flex justify-between items-start">  
@@ -149,7 +148,7 @@
                     <button class="btn btn-outline btn-error geist">Rejected</button>
                 </div> 
             </div>
-            <button class="cursor-pointer w-24 h-24 md:w-auto md:h-auto"><img src="recycle bin.png" alt="" ></button>
+            <button class="btn btn-circle"><img src="recycle bin.png" alt="" ></button>
         </div> 
     <!--------------------------------MegaCorp Solutions------------------------------------->  
         <div class="bg-white border-1 border-[#F1F2F4] p-6 rounded-lg flex justify-between items-start">  
@@ -164,7 +163,7 @@
                     <button class="btn btn-outline btn-error geist">Rejected</button>
                 </div> 
             </div>
-            <button class="cursor-pointer w-24 h-24 md:w-auto md:h-auto"><img src="recycle bin.png" alt="" ></button>
+            <button class="btn btn-circle"><img src="recycle bin.png" alt="" ></button>
         </div> 
     <!--------------------------------StartupXYZ------------------------------------->  
         <div class="bg-white border-1 border-[#F1F2F4] p-6 rounded-lg flex justify-between items-start">  
@@ -179,7 +178,7 @@
                     <button class="btn btn-outline btn-error geist">Rejected</button>
                 </div> 
             </div>
-            <button class="cursor-pointer w-24 h-24 md:w-auto md:h-auto"><img src="recycle bin.png" alt="" ></button>
+            <button class="btn btn-circle"><img src="recycle bin.png" alt="" ></button>
         </div> 
     <!--------------------------------TechCorp Industries------------------------------------->  
         <div class="bg-white border-1 border-[#F1F2F4] p-6 rounded-lg flex justify-between items-start">  
@@ -194,8 +193,16 @@
                     <button class="btn btn-outline btn-error geist">Rejected</button>
                 </div> 
             </div>
-            <button class="cursor-pointer w-24 h-24 md:w-auto md:h-auto"><img src="recycle bin.png" alt="" ></button>
+            <button class="btn btn-circle"><img src="recycle bin.png" alt="" ></button>
         </div> 
     </section>
+
+    <section id="interview-jobs" class="space-y-5 hidden"></section>
+    <section id="rejected-jobs" class="space-y-5 hidden"></section>
+
+
+    
+    </main>
+    <script src="/script.js"></script>
 </body>
 </html>
