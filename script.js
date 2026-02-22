@@ -36,3 +36,12 @@ function toggleStyle(id){
 
 
 
+// status //
+document.getElementById('card-interview-btn').addEventListener('click',function(){
+    document.getElementById('accepted-btn').classList.remove('hidden')
+    document.getElementById('rejected-btn').classList.add('hidden')
+})
+document.getElementById('card-rejected-btn').addEventListener('click',function(){
+    document.getElementById('rejected-btn').classList.remove('hidden')
+    document.getElementById('accepted-btn').classList.add('hidden')
+})
