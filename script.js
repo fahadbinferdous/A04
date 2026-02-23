@@ -47,7 +47,7 @@ function toggleStyle(id){
     else if (id == 'toggle-rejected-btn') {
         allJobsList.classList.add('hidden');
         filterSection.classList.remove('hidden')
-        renderRejectedButton()  //-------------------------------------------pending
+        renderRejectedButton()
     }
 
 }
@@ -138,7 +138,7 @@ function renderInterviewButton() {
         
 
         let div = document.createElement('div');
-        div.className = 'job-card bg-white border-1 border-[#F1F2F4] p-6 mb-5 rounded-lg flex justify-between items-start'
+        div.className = 'job-card bg-white border-1 border-[#F1F2F4] p-6 rounded-lg flex justify-between items-start'
         div.innerHTML = `
          <div class="space-y-5">
                     <h4 class="company ag font-bold text-[#002C5C] text-[18px]">${interview.company}</h4>
@@ -165,7 +165,7 @@ function renderRejectedButton() {
     for (let rejected of rejectedJobsList) {
 
         let div = document.createElement('div');
-        div.className = 'job-card bg-white border-1 border-[#F1F2F4] p-6 mb-5 rounded-lg flex justify-between items-start'
+        div.className = 'job-card bg-white border-1 border-[#F1F2F4] p-6 rounded-lg flex justify-between items-start'
         div.innerHTML = `
          <div class="space-y-5">
                     <h4 class="company ag font-bold text-[#002C5C] text-[18px]">${rejected.company}</h4>
@@ -184,3 +184,10 @@ function renderRejectedButton() {
         filterSection.appendChild(div)
     }
 }
+
+//  delete button //
+document.getElementsByName('.delete-btn').addEventListener('click',function(){
+    
+    document.getElementsByClassName('.delete-btn').parentNode.remove()
+
+})
