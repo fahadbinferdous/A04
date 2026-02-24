@@ -6,6 +6,7 @@ let currentStatus = 'all'
 let totalCount=document.getElementById('total-count')   
 let interviewCount=document.getElementById('interview-count')
 let rejectedCount=document.getElementById('rejected-count')
+let availableJobsCount=document.getElementById('available-jobs-count')
 
 
 let toggleAllBtn = document.getElementById('toggle-all-btn')
@@ -16,21 +17,25 @@ let allJobsList = document.getElementById('all-jobs-list')
 let mainContainer = document.querySelector('main')
 let filterSection = document.getElementById('filtered-section')
 
+// dashboard
+
 function calculateCount() {
     totalCount.innerText = allJobsList.children.length
     interviewCount.innerText = interviewJobsList.length
     rejectedCount.innerText = rejectedJobsList.length
+    availableJobsCount.innerText = allJobsList.children.length+' jobs'
 }
 
 calculateCount()
 
+// toggle buttons management
 
 function toggleStyle(id){
     document.getElementById('toggle-all-btn').classList.remove('btn-active')
     document.getElementById('toggle-interview-btn').classList.remove('btn-active')
     document.getElementById('toggle-rejected-btn').classList.remove('btn-active')
     
-    let selected=document.getElementById(id).classList.add('btn-active')  
+    document.getElementById(id).classList.add('btn-active')  
 
     currentStatus = id
 
@@ -39,6 +44,8 @@ function toggleStyle(id){
     allJobsList.classList.add('hidden')
     filterSection.classList.remove('hidden')
     renderInterviewButton()
+
+    availableJobsCount.innerText = interviewCount.innerText+' of '+totalCount.innerText+' jobs'
 
     if(filterSection.children.length<1){
         filterSection.innerHTML=
@@ -53,11 +60,14 @@ function toggleStyle(id){
     else if (id=='toggle-all-btn') {
         allJobsList.classList.remove('hidden')
         filterSection.classList.add('hidden')
+        availableJobsCount.innerText = totalCount.innerText+' jobs'
     }
     else if (id == 'toggle-rejected-btn') {
         allJobsList.classList.add('hidden');
         filterSection.classList.remove('hidden')
-        renderRejectedButton()
+        renderRejectButton()
+
+        availableJobsCount.innerText = rejectedCount.innerText+' of '+totalCount.innerText+' jobs'
 
         if(filterSection.children.length<1){
         filterSection.innerHTML=
@@ -68,10 +78,10 @@ function toggleStyle(id){
         </div>`} 
 
     }
-
+    
 }
 
-// step 2 delegation
+// job list management
 mainContainer.addEventListener('click', function (event) {
     if (event.target.classList.contains('interview-btn')) {
         const parenNode = event.target.parentNode.parentNode
@@ -97,13 +107,13 @@ mainContainer.addEventListener('click', function (event) {
         if (!jobExist) {
             interviewJobsList.push(cardInfo)
         }
-        // step 2 finish
+        
         // removing the jobs from rejected job list
         rejectedJobsList = rejectedJobsList.filter(item => item.company != cardInfo.company)
 
         // after remove rerender the html
         if (currentStatus == 'toggle-rejected-btn') {
-            renderRejectedButton() 
+            renderRejectButton() 
         }
 
          calculateCount()
@@ -145,9 +155,12 @@ mainContainer.addEventListener('click', function (event) {
         calculateCount()
 
     }
+
+    
+
 })
 
-// step 3  html file create
+
 function renderInterviewButton() {
     // make the filterSection empty every time
     filterSection.innerHTML = ''
@@ -171,13 +184,14 @@ function renderInterviewButton() {
                     </div> 
 
                 </div>
-                <button class="delete-btn btn btn-circle"><img src="recycle bin.png" alt="" ></button>
+                <button onclick="deleteParent(this)" class="delete-btn btn btn-circle"><img src="recycle bin.png" alt="" ></button>
         `
         filterSection.appendChild(div)
     }
+
 }
 
-function renderRejectedButton() {
+function renderRejectButton() {
     // make the filterSection empty every time
     filterSection.innerHTML = ''
     // creating innerHtml
@@ -198,7 +212,7 @@ function renderRejectedButton() {
                     </div> 
 
                 </div>
-                <button class="delete-btn btn btn-circle"><img src="recycle bin.png" alt="" ></button>
+                <button onclick="deleteParent(this)" class="delete-btn btn btn-circle"><img src="recycle bin.png" alt="" ></button>
         `
         filterSection.appendChild(div)
     }
@@ -207,6 +221,8 @@ function renderRejectedButton() {
 //  delete button //
 function deleteParent(buttonClassName) {
     buttonClassName.parentNode.remove()
+    
+    calculateCount()
 }
 
 
