@@ -65,9 +65,9 @@
     <!--------------------------------------toggle buttons---------------------------------------------->
     <!-------------------------------------------------------------------------------------------------->
         <section id="toggle-buttons" class="py-6">
-                <button onclick="toggleStyle('toggle-all-btn')" id="toggle-all-btn" class="btn btn-active geist">All</button>
-                <button onclick="toggleStyle('toggle-interview-btn')" id="toggle-interview-btn" class="btn geist">Interview</button>
-                <button onclick="toggleStyle('toggle-rejected-btn')" id="toggle-rejected-btn" class="btn geist">Rejected</button>
+            <button onclick="toggleStyle('toggle-all-btn')" id="toggle-all-btn" class="btn btn-active geist">All</button>
+            <button onclick="toggleStyle('toggle-interview-btn')" id="toggle-interview-btn" class="btn geist">Interview</button>
+            <button onclick="toggleStyle('toggle-rejected-btn')" id="toggle-rejected-btn" class="btn geist">Rejected</button>
         </section>
     <!-------------------------------------------------------------------------------------------------->
     <!------------------------------------------- Filtered card ---------------------------------------->
@@ -92,7 +92,7 @@
                         <button class="rejected-btn btn btn-outline btn-error geist">Reject</button>
                     </div> 
                 </div>
-                <button class="delete-btn btn btn-circle"><img src="recycle bin.png" alt="" ></button>
+                <button onclick="deleteParent(this)" class="delete-btn btn btn-circle"><img src="recycle bin.png" alt="" ></button>
             </div> 
         
         <!--------------------------------WebFlow Agency------------------------------------->  
@@ -108,7 +108,7 @@
                         <button class="rejected-btn btn btn-outline btn-error geist">Reject</button>
                     </div> 
                 </div>
-                <button class="delete-btn btn btn-circle"><img src="recycle bin.png" alt="" ></button>
+                <button onclick="deleteParent(this)" class="delete-btn btn btn-circle"><img src="recycle bin.png" alt="" ></button>
             </div> 
         <!--------------------------------DataViz Solutions------------------------------------->  
             <div class="job-card bg-white border-1 border-[#F1F2F4] p-6 rounded-lg flex justify-between items-start">  
@@ -123,7 +123,7 @@
                         <button class="rejected-btn btn btn-outline btn-error geist">Reject</button>
                     </div> 
                 </div>
-                <button class="delete-btn btn btn-circle"><img src="recycle bin.png" alt="" ></button>
+                <button onclick="deleteParent(this)" class="delete-btn btn btn-circle"><img src="recycle bin.png" alt="" ></button>
             </div> 
         <!--------------------------------CloudFirst Inc------------------------------------->  
             <div class="job-card bg-white border-1 border-[#F1F2F4] p-6 rounded-lg flex justify-between items-start">  
@@ -138,7 +138,7 @@
                         <button class="rejected-btn btn btn-outline btn-error geist">Reject</button>
                     </div> 
                 </div>
-                <button class="delete-btn btn btn-circle"><img src="recycle bin.png" alt="" ></button>
+                <button onclick="deleteParent(this)" class="delete-btn btn btn-circle"><img src="recycle bin.png" alt="" ></button>
             </div> 
         <!--------------------------------Innovation Labs------------------------------------->  
             <div class="job-card bg-white border-1 border-[#F1F2F4] p-6 rounded-lg flex justify-between items-start">  
@@ -153,7 +153,7 @@
                         <button class="rejected-btn btn btn-outline btn-error geist">Reject</button>
                     </div> 
                 </div>
-                <button class="delete-btn btn btn-circle"><img src="recycle bin.png" alt="" ></button>
+                <button onclick="deleteParent(this)" class="delete-btn btn btn-circle"><img src="recycle bin.png" alt="" ></button>
             </div> 
         <!--------------------------------MegaCorp Solutions------------------------------------->  
             <div class="job-card bg-white border-1 border-[#F1F2F4] p-6 rounded-lg flex justify-between items-start">  
@@ -168,7 +168,7 @@
                         <button class="rejected-btn btn btn-outline btn-error geist">Reject</button>
                     </div> 
                 </div>
-                <button class="delete-btn btn btn-circle"><img src="recycle bin.png" alt="" ></button>
+                <button onclick="deleteParent(this)" class="delete-btn btn btn-circle"><img src="recycle bin.png" alt="" ></button>
             </div> 
         <!--------------------------------StartupXYZ------------------------------------->  
             <div class="job-card bg-white border-1 border-[#F1F2F4] p-6 rounded-lg flex justify-between items-start">  
@@ -183,7 +183,7 @@
                         <button class="rejected-btn btn btn-outline btn-error geist">Reject</button>
                     </div> 
                 </div>
-                <button class="delete-btn btn btn-circle"><img src="recycle bin.png" alt="" ></button>
+                <button onclick="deleteParent(this)" class="delete-btn btn btn-circle"><img src="recycle bin.png" alt="" ></button>
             </div> 
         <!--------------------------------TechCorp Industries------------------------------------->  
             <div class="job-card bg-white border-1 border-[#F1F2F4] p-6 rounded-lg flex justify-between items-start">  
@@ -198,11 +198,12 @@
                         <button class="rejected-btn btn btn-outline btn-error geist">Reject</button>
                     </div> 
                 </div>
-                <button class="delete-btn btn btn-circle"><img src="recycle bin.png" alt="" ></button>
+                <button onclick="deleteParent(this)" class="delete-btn btn btn-circle"><img src="recycle bin.png" alt="" ></button>
             </div> 
         </section>
 
-
+        
+    
     
     </main>
     <script src="script.js"></script>

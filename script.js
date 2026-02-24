@@ -17,7 +17,7 @@ let mainContainer = document.querySelector('main')
 let filterSection = document.getElementById('filtered-section')
 
 function calculateCount() {
-    totalCount.innerText = allJobsList.children.length //3
+    totalCount.innerText = allJobsList.children.length
     interviewCount.innerText = interviewJobsList.length
     rejectedCount.innerText = rejectedJobsList.length
 }
@@ -39,7 +39,17 @@ function toggleStyle(id){
     allJobsList.classList.add('hidden')
     filterSection.classList.remove('hidden')
     renderInterviewButton()
-    }
+
+    if(filterSection.children.length<1){
+        filterSection.innerHTML=
+        `<div class="job-card bg-white h-96 w-full rounded-lg border-1 border-[#F1F2F4] mt-6 flex flex-col items-center justify-center">
+            <img src="jobs.png" alt="" class="h-36 w-30">
+            <p class="geist font-semibold text-2xl text-[#002C5C]">No jobs available</p>
+            <p class="geist text-sm text-[#64748B]">Check back soon for new job opportunities</p>
+        </div>`} 
+
+
+}
     else if (id=='toggle-all-btn') {
         allJobsList.classList.remove('hidden')
         filterSection.classList.add('hidden')
@@ -48,6 +58,15 @@ function toggleStyle(id){
         allJobsList.classList.add('hidden');
         filterSection.classList.remove('hidden')
         renderRejectedButton()
+
+        if(filterSection.children.length<1){
+        filterSection.innerHTML=
+        `<div class="job-card bg-white h-96 w-full rounded-lg border-1 border-[#F1F2F4] mt-6 flex flex-col items-center justify-center">
+            <img src="jobs.png" alt="" class="h-36 w-30">
+            <p class="geist font-semibold text-2xl text-[#002C5C]">No jobs available</p>
+            <p class="geist text-sm text-[#64748B]">Check back soon for new job opportunities</p>
+        </div>`} 
+
     }
 
 }
@@ -79,12 +98,12 @@ mainContainer.addEventListener('click', function (event) {
             interviewJobsList.push(cardInfo)
         }
         // step 2 finish
-        // removing the plant from struggling list
+        // removing the jobs from rejected job list
         rejectedJobsList = rejectedJobsList.filter(item => item.company != cardInfo.company)
 
         // after remove rerender the html
         if (currentStatus == 'toggle-rejected-btn') {
-            renderRejectedButton()  //-------------------------------------------pending
+            renderRejectedButton() 
         }
 
          calculateCount()
@@ -114,10 +133,10 @@ mainContainer.addEventListener('click', function (event) {
             rejectedJobsList.push(cardInfo)
         }
 
-        // removing the plant from thriving list
+        // removing the job from interview list
         interviewJobsList = interviewJobsList.filter(item => item.company != cardInfo.company)
 
-        // console.log(thrivingList);
+        
 
         // after remove rerender the html
         if (currentStatus == "toggle-interview-btn") {
@@ -161,7 +180,7 @@ function renderInterviewButton() {
 function renderRejectedButton() {
     // make the filterSection empty every time
     filterSection.innerHTML = ''
-    // crating innerHtml
+    // creating innerHtml
     for (let rejected of rejectedJobsList) {
 
         let div = document.createElement('div');
@@ -186,8 +205,8 @@ function renderRejectedButton() {
 }
 
 //  delete button //
-document.getElementsByName('.delete-btn').addEventListener('click',function(){
-    
-    document.getElementsByClassName('.delete-btn').parentNode.remove()
+function deleteParent(buttonClassName) {
+    buttonClassName.parentNode.remove()
+}
 
-})
+
