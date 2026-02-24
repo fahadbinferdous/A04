@@ -1,7 +1,7 @@
 
 let interviewJobsList=[]
 let rejectedJobsList=[]
-let currentStatus = 'all'
+let currentStatus = ''
 
 let totalCount=document.getElementById('total-count')   
 let interviewCount=document.getElementById('interview-count')
@@ -89,16 +89,16 @@ mainContainer.addEventListener('click', function (event) {
         const company = parenNode.querySelector('.company').innerText
         const designation = parenNode.querySelector('.designation').innerText
         const jobSpecs = parenNode.querySelector('.job-specs').innerText
-        const status = parenNode.querySelector('.status').innerText
+        const jobStatus = parenNode.querySelector('.job-status').innerText
         const jd = parenNode.querySelector('.jd').innerText
 
-        parenNode.querySelector('.status').innerText = 'Interview'
+        parenNode.querySelector('.job-status').innerText = 'Interview'
 
         const cardInfo = {
             company,
             designation,
             jobSpecs,
-            status: 'Interview',
+            jobStatus: 'Interview',
             jd
         }
 
@@ -124,16 +124,16 @@ mainContainer.addEventListener('click', function (event) {
         const company = parenNode.querySelector('.company').innerText
         const designation = parenNode.querySelector('.designation').innerText
         const jobSpecs = parenNode.querySelector('.job-specs').innerText
-        const status = parenNode.querySelector('.status').innerText
+        const jobStatus = parenNode.querySelector('.job-status').innerText
         const jd = parenNode.querySelector('.jd').innerText
 
-        parenNode.querySelector('.status').innerText = 'Rejected'
+        parenNode.querySelector('.job-status').innerText = 'Rejected'
 
         const cardInfo = {
             company,
             designation,
             jobSpecs,
-            status: 'Rejected',
+            jobStatus: 'Rejected',
             jd
         }
 
@@ -176,7 +176,7 @@ function renderInterviewButton() {
                     <h4 class="company ag font-bold text-[#002C5C] text-[18px]">${interview.company}</h4>
                     <p class="designation ag text-[#64748B] text-[16px]">${interview.designation}</p>
                     <p class="job-specs ag text-[#64748B] text-[12px]">${interview.jobSpecs}</p>
-                    <p class="status">${interview.status}</p>
+                    <p class="job-status geist text-[#002C5C] font-medium text-sm bg-[#EEF4FF] rounded inline-block">${interview.jobStatus}</p>
                     <p class="jd ag text-[#323B49] text-[12px]">${interview.jd}</p>
                     <div>
                         <button class="interview-btn ib btn btn-outline btn-success geist">Interview</button>
@@ -204,7 +204,7 @@ function renderRejectButton() {
                     <h4 class="company ag font-bold text-[#002C5C] text-[18px]">${rejected.company}</h4>
                     <p class="designation ag text-[#64748B] text-[16px]">${rejected.designation}</p>
                     <p class="job-specs ag text-[#64748B] text-[12px]">${rejected.jobSpecs}</p>
-                    <p class="status">${rejected.status}</p>
+                    <p class="job-status geist text-[#002C5C] font-medium text-sm bg-[#EEF4FF] rounded inline-block">${rejected.jobStatus}</p>
                     <p class="jd ag text-[#323B49] text-[12px]">${rejected.jd}</p>
                     <div>
                         <button class="interview-btn ib btn btn-outline btn-success geist">Interview</button>
